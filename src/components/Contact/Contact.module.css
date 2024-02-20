@@ -1,0 +1,31 @@
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .contact {
+    min-width: 345px;
+    flex-basis: calc((100% - 15px * 1) / 2);
+  }
+}
+
+.name {
+  margin-bottom: 10px;
+}
+
+.number {
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+}
