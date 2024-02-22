@@ -2,9 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #000;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 20px;
+  background-color: var(--block-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -14,15 +15,32 @@
   }
 }
 
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 100%;
+}
+
 .name {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .number {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .icon {
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  color: #fff;
 }
 
 .buttonGroup {

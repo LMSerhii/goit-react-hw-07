@@ -1,0 +1,12 @@
+.homeLayout {
+  background-color: #414a4c;
+  padding: 24px;
+}
+
+@media screen and (min-width: 1024px) {
+  .homeLayout {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+}

@@ -1,22 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
-import Title from './Titile/Title';
-import Layout from './Layout/Layout';
-import SearchBox from './SearchBox/SearchBox';
-import ContactList from './ContactList/ContactList';
-import Aside from './Aside/Aside';
-import Main from './Main/Main';
+import { useDispatch } from 'react-redux';
+import { Suspense, lazy, useEffect } from 'react';
 import Loading from './Loading/Loading';
-import Error from './Error/Error';
-import AddContact from './AddContact/AddContact';
+import Layout from './Layout/Layout';
 import { fetchContacts } from '../redux/operations';
-import { selectError, selectIsLoading } from '../redux/selectors';
+import { Route, Routes } from 'react-router-dom';
+import { AppBar } from './AppBar/AppBar';
+import NotFound from '../pages/NotFound';
+
+const Home = lazy(() => import('../pages/Home'));
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -24,17 +18,14 @@ export default function App() {
 
   return (
     <Layout>
-      <Aside>
-        <Title />
-        <SearchBox />
-        <AddContact />
-      </Aside>
-      <Main>
-        {isLoading && !error && <Loading />}
-        {error && <Error>{error}</Error>}
-        {!isLoading && !error && <ContactList />}
-      </Main>
-      <Toaster />
+      <AppBar />
+
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }

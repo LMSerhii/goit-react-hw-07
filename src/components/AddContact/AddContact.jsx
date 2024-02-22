@@ -1,9 +1,9 @@
 import toast from 'react-hot-toast';
 import ContactForm from '../ContactForm/ContactForm';
-import css from './AddContact.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from '../../redux/operations';
 import { selectContacts } from '../../redux/selectors';
+import BlockHeader from '../BlockHeader/BlockHeader';
 
 export default function AddContact() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ export default function AddContact() {
 
   return (
     <>
-      <p className={css.header}>Add new contact</p>
+      <BlockHeader>Add new contact</BlockHeader>
       <ContactForm
         initialValues={initialValues}
         onSubmit={handleSaubmit}

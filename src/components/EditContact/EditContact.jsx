@@ -1,8 +1,8 @@
-import css from './EditContact.module.css';
 import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/operations';
 import toast from 'react-hot-toast';
 import ContactForm from '../ContactForm/ContactForm';
+import BlockHeader from '../BlockHeader/BlockHeader';
 
 export default function EditContact({ onClose, id, name, phone }) {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function EditContact({ onClose, id, name, phone }) {
 
   return (
     <>
-      <p className={css.header}>You can edit this contact</p>
+      <BlockHeader>You can edit this contact</BlockHeader>
       <ContactForm
         initialValues={initialValues}
         onSubmit={handleSubmit}

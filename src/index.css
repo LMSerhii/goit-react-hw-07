@@ -1,11 +1,17 @@
 :root {
   --font-family: 'Roboto', sans-serif;
-  --text-color: #000000c4;
+  --text-color: #ffffff74;
+  --header-color: #fff;
+  --border-color: #ffffff85;
+  --input-color: #414a4c;
+  --block-color: #3b444b;
+  --button: #353839;
 }
 
 body {
   font-family: var(--font-family);
   color: var(--text-color);
+  background-color: #000000c3;
 }
 
 h1,

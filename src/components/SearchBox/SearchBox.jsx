@@ -4,6 +4,7 @@ import { filterContacts } from '../../redux/filtersSlice';
 import css from './SearchBox.module.css';
 import { selectQuery } from '../../redux/selectors';
 import { useId } from 'react';
+import BlockHeader from '../BlockHeader/BlockHeader';
 
 export default function SearchBox() {
   const searchBoxId = useId();
@@ -11,19 +12,22 @@ export default function SearchBox() {
   const query = useSelector(selectQuery);
 
   return (
-    <div className={css.searchBox}>
-      <label className={css.label} htmlFor={searchBoxId}>
+    <>
+      <BlockHeader>Find contacts by name or phone</BlockHeader>
+      <div className={css.searchBox}>
+        {/* <label className={css.label} htmlFor={searchBoxId}>
         Find contacts by name or phone
-      </label>
-      <input
-        className={css.input}
-        type="text"
-        value={query}
-        id={searchBoxId}
-        name="searchContact"
-        placeholder="Search contact"
-        onChange={evt => dispatch(filterContacts(evt.target.value))}
-      />
-    </div>
+      </label> */}
+        <input
+          className={css.input}
+          type="text"
+          value={query}
+          id={searchBoxId}
+          name="searchContact"
+          placeholder="Search contact"
+          onChange={evt => dispatch(filterContacts(evt.target.value))}
+        />
+      </div>
+    </>
   );
 }

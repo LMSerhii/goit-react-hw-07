@@ -1,5 +1,5 @@
 import { RiContactsBookFill } from 'react-icons/ri';
-import css from './Titile.module.css';
+import css from './Title.module.css';
 
 export default function Title() {
   return (
