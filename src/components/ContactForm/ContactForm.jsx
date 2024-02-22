@@ -4,8 +4,9 @@ import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import Button from '../Button/Button';
-import { addContacts, getContacts } from '../../redux/contactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from '../../redux/selectors';
+import { addContacts } from '../../redux/operations';
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,7 +56,13 @@ export default function ContactForm() {
           <label className={css.label} htmlFor={nameFieldId}>
             Name
           </label>
-          <Field className={css.input} type="text" name="name" />
+          <Field
+            className={css.input}
+            type="text"
+            name="name"
+            id={nameFieldId}
+            autoComplete="on"
+          />
           <ErrorMessage className={css.errorMsg} name="name" component="span" />
         </div>
 
@@ -63,7 +70,13 @@ export default function ContactForm() {
           <label className={css.label} htmlFor={phoneFieldId}>
             Number
           </label>
-          <Field className={css.input} type="tel" name="number" />
+          <Field
+            className={css.input}
+            type="tel"
+            name="number"
+            id={phoneFieldId}
+            autoComplete="on"
+          />
           <ErrorMessage
             className={css.errorMsg}
             name="number"
