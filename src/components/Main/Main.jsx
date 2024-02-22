@@ -1,4 +1,4 @@
-import css from './MainComponent.module.css';
+import css from './Main.module.css';
 
 export default function Main({ children }) {
   return <main className={css.main}>{children}</main>;

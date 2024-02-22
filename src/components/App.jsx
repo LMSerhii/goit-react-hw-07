@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Title from './Titile/Title';
 import Layout from './Layout/Layout';
@@ -5,16 +7,16 @@ import ContactForm from './ContactForm/ContactForm';
 import SearchBox from './SearchBox/SearchBox';
 import ContactList from './ContactList/ContactList';
 import Aside from './Aside/Aside';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import Main from './Main/Main';
+import Loading from './Loading/Loading';
+import Error from './Error/Error';
 import { fetchContacts } from '../redux/operations';
-import { getError, getIsLoading } from '../redux/selectors';
-import Main from './MainComponent/MainComponent';
+import { selectError, selectIsLoading } from '../redux/selectors';
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -23,13 +25,13 @@ export default function App() {
   return (
     <Layout>
       <Aside>
-        <Title>Phonebook</Title>
+        <Title />
         <SearchBox />
         <ContactForm />
       </Aside>
       <Main>
-        {isLoading && !error && <p>Loading ...</p>}
-        {error && error}
+        {isLoading && !error && <Loading />}
+        {error && <Error>{error}</Error>}
         {!isLoading && !error && <ContactList />}
       </Main>
       <Toaster />

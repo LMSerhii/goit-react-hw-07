@@ -2,12 +2,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { filterContacts } from '../../redux/filtersSlice';
 import css from './SearchBox.module.css';
-import { getQuery } from '../../redux/selectors';
+import { selectQuery } from '../../redux/selectors';
 
 export default function SearchBox() {
   // const searchBoxId = useId();
   const dispatch = useDispatch();
-  const query = useSelector(getQuery);
+  const query = useSelector(selectQuery);
 
   return (
     <div className={css.searchBox}>

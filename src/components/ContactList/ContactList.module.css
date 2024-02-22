@@ -11,3 +11,10 @@
     flex-wrap: wrap;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .contactList {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}

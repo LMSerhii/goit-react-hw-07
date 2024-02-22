@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
+import { selectContacts } from '../../redux/selectors';
 import { addContacts } from '../../redux/operations';
 
 const ContactFormSchema = Yup.object().shape({
@@ -25,7 +25,7 @@ export default function ContactForm() {
   const dispatch = useDispatch();
   const nameFieldId = useId();
   const phoneFieldId = useId();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSaubmit = (values, action) => {
     const existingContact = contacts.find(
