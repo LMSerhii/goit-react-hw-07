@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Title from './Titile/Title';
 import Layout from './Layout/Layout';
-import ContactForm from './ContactForm/ContactForm';
 import SearchBox from './SearchBox/SearchBox';
 import ContactList from './ContactList/ContactList';
 import Aside from './Aside/Aside';
 import Main from './Main/Main';
 import Loading from './Loading/Loading';
 import Error from './Error/Error';
+import AddContact from './AddContact/AddContact';
 import { fetchContacts } from '../redux/operations';
 import { selectError, selectIsLoading } from '../redux/selectors';
 
@@ -27,7 +27,7 @@ export default function App() {
       <Aside>
         <Title />
         <SearchBox />
-        <ContactForm />
+        <AddContact />
       </Aside>
       <Main>
         {isLoading && !error && <Loading />}

@@ -1,12 +1,8 @@
 import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import Button from '../Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/selectors';
-import { addContacts } from '../../redux/operations';
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,36 +15,14 @@ const ContactFormSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const initialValues = { name: '', number: '' };
-
-export default function ContactForm() {
-  const dispatch = useDispatch();
+export default function ContactForm({ initialValues, onSubmit, action }) {
   const nameFieldId = useId();
   const phoneFieldId = useId();
-  const contacts = useSelector(selectContacts);
-
-  const handleSaubmit = (values, action) => {
-    const existingContact = contacts.find(
-      contact =>
-        contact.name.toLowerCase() === values.name.toLowerCase() ||
-        contact.number === values.number
-    );
-
-    if (existingContact) {
-      toast.error('This contact already exists.');
-      return;
-    }
-
-    dispatch(addContacts(values));
-
-    toast.success('Contact added successfully!');
-    action.resetForm();
-  };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSaubmit}
+      onSubmit={onSubmit}
       validationSchema={ContactFormSchema}
     >
       <Form className={css.form}>
@@ -85,7 +59,7 @@ export default function ContactForm() {
         </div>
 
         <Button className={css.button} type="submit">
-          Add contact
+          {action}
         </Button>
       </Form>
     </Formik>
